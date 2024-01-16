@@ -1,4 +1,4 @@
-# Getting Started with sreeja pathi aws 
+# Getting Started with changes made by nikhil rao
 
 ### Reference Documentation
 For further reference, please consider the following sections:
