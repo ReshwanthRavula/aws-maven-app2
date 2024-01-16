@@ -1,4 +1,4 @@
-# Getting Started rajitha rani 
+# Getting Started with sreeja pathi aws 
 
 ### Reference Documentation
 For further reference, please consider the following sections:
