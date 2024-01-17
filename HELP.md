@@ -1,4 +1,4 @@
-# Getting Started with changes made by nikhil rao sreeja 
+# Getting Started with changes made by nikhil rao sreeja reshwanht
 
 ### Reference Documentation
 For further reference, please consider the following sections:
