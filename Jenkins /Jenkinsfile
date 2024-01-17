@@ -1,0 +1,60 @@
+pipeline {
+    agent {
+       node {
+    		label 'aws-vm'
+    		}
+        }
+     options {
+                timestamps()
+                buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
+                timeout(time: 120, unit: 'MINUTES')
+                disableConcurrentBuilds()
+            }
+
+    parameters {
+            string(name: 'appBranch', defaultValue: 'main', description: "Application Branch name of the Repo")
+            string(name: 'gitURL', defaultValue: 'https://github.com/ReshwanthRavula/aws-maven-app2.git', description: "Pass the Maven Repo Source Code GIT URL")
+            }            
+
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: appBranch, url: gitURL
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build . -f dockerfile_testapp -t reshwanth35/mavendemoapp:Jan11'
+
+            }
+        }  
+
+        stage('Docker Login') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerloginID', passwordVariable: 'dockerPWD', usernameVariable: 'dockerID')])
+                {
+                    sh 'docker login -u ${dockerID} -p ${dockerPWD}'
+                }
+
+            }
+        }              
+
+        stage('Docker Push') {
+            steps {
+                sh 'docker push reshwanth35/mavendemoapp:Jan11'
+
+            }
+        } 
+        stage('Docker Run') {
+            steps {
+                sh 'docker run -d -p 8080:8080 samplemavendemoapp:latest'
+            }
+        }
+    }
+}
