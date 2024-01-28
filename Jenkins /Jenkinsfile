@@ -30,7 +30,7 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build . -f dockerfile_testapp -t reshwanth35/mavendemoapp:Jan11'
+                sh 'docker build . -f dockerfile_testapp -t reshwanth35/mavendemoapp:latest'
 
             }
         }  
