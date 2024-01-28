@@ -47,7 +47,7 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                sh 'docker push reshwanth35/mavendemoapp:Jan11'
+                sh 'docker push reshwanth35/mavendemoapp:latest'
 
             }
         } 
