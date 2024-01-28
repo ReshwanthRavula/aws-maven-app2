@@ -54,8 +54,7 @@ pipeline {
         stage('k8s-Manifest Checkout') {
             steps {
 
-                git 'https://github.com/ReshwanthRavula/aws-k8s-cicd.git'
-
+                git 'https://github.com/ravularisheek/aws-k8s-cicd.git'
             }
         }
 
