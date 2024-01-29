@@ -8,7 +8,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from reshwanth ravula DevOPS Class Today - Aug 19 2023 - Version 2!";
+        return "Greetings from sreeja pathi DevOPS Class Today - Aug 19 2023 - Version 3!";
     }
 
 }
